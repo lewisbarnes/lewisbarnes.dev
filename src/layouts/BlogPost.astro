@@ -1,0 +1,71 @@
+---
+
+import PageNav from '../components/PageNav.astro';
+export interface Props {
+	title: string;
+}
+const { frontmatter } = Astro.props;
+---
+
+<style is:global>
+	@import "https://rsms.me/inter/inter.css";
+
+	html {
+  	color-scheme: dark;
+	}
+
+	#post-content img {
+		@apply lg:max-h-[50vh] mx-auto my-8 rounded-md;
+	}
+
+	#post-content a {
+		@apply font-bold text-[#FD107A] hover:underline;
+	}
+
+	#post-content h2 {
+		@apply text-2xl my-2;
+	}
+
+	#post-content h3 {
+		@apply text-xl my-2;
+	}
+
+	#post-content h4 + ul {
+		@apply w-max ml-[3vw] my-2;
+	}
+
+	#post-content p {
+		@apply my-2;
+	}
+
+	.astro-code {
+		@apply p-4 mx-auto rounded-md;
+	}
+</style>
+
+<!DOCTYPE html>
+<html lang="en" class="">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<meta property="og:article:author" content={frontmatter.author} />
+		<meta property="og:article:publisher" content={frontmatter.author} />
+		<title>Lewis Barnes // Blog // {frontmatter.title}</title>
+		<script src="/nav.js" is:inline></script>
+	</head>
+	<body class="bg-zinc-800 font-inter">
+		<PageNav/>
+		<div class="mx-[10vw]">
+			<div id="content" class="pb-8">
+				<h1 class="text-4xl mb-8">
+					{frontmatter.title}
+				</h1>
+				<div id="post-content">
+					<slot />
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

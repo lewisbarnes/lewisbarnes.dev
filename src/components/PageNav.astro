@@ -1,0 +1,31 @@
+---
+import PageLink from './PageLink.astro';
+import { Icon } from 'astro-icon';
+
+export interface Props {
+  pageName?: string;
+}
+
+const { pageName = '' } = Astro.props;
+---
+<nav class="px-[10vw] py-12">
+  <div class="mx-auto text-white flex items-center justify-between">
+    <a href="/" class="text-2xl font-medium hover:text-[#FD107A]">Lewis Barnes</a>
+    <ul class="hidden lg:flex font-medium text-lg">
+      <PageLink href="/blog" caption="Blog" />
+      <PageLink href="/projects" caption="Projects" />
+      <PageLink href="/about" caption="About" />
+    </ul>
+    <button id="nav-toggle" class="lg:hidden"
+      ><Icon name="fa:bars" class="h-6 hover:text-[#FD107A]" />
+    </button>
+  </div>
+	<div id="nav-menu" class="left-0 right-0 bg-zinc-800 hidden py-12">
+		<ul class="font-medium text-3xl">
+      <PageLink href="/blog" caption="Blog" />
+      <PageLink href="/projects" caption="Projects" />
+      <PageLink href="/about" caption="About" />
+    </ul>
+	</div>
+</nav>
+

@@ -1,0 +1,12 @@
+---
+export interface Props {
+	href: string;
+	caption: string;
+}
+
+const { href, caption } = Astro.props;
+---
+
+<li class="px-5 py-2 hover:text-[#FD107A]">
+	<a href={href}>{caption}</a>
+</li>

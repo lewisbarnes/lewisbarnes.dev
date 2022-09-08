@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageLink from '../components/PageLink.astro';
+import { Icon } from 'astro-icon';
+import GitHubCard from '../components/GitHubCard.astro';
+import PageNav from '../components/PageNav.astro';
+import PageFooter from '../components/PageFooter.astro';
+---
+
+<Layout title="Lewis Barnes">
+  <main class="flex flex-col h-screen" >
+		<PageNav/>
+    <div
+      class="text-white mx-[10vw] h-[60vh] grid grid-cols-4 grid-flow-row lg:grid-cols-8 text-center lg:text-left main-content"
+    >
+      <p
+        class="text-5xl lg:text-7xl col-span-4 row-start-2 lg:row-start-1 my-auto whitespace-pre-line"
+      >
+        {`Full Stack Engineer.\nBuilding Cool Stuff.`}
+      </p>
+      <div class="text-6xl col-start-1 lg:col-start-5 col-span-4 my-auto mx-auto">
+        <img
+          class="h-[30vh] rounded-full"
+          src="https://avatars.githubusercontent.com/u/9212332?v=4"
+        />
+      </div>
+    </div>
+  </main>
+	<PageFooter/>
+</Layout>

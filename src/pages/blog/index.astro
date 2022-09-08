@@ -1,0 +1,42 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageLink from '../../components/PageLink.astro';
+import { Icon } from 'astro-icon';
+import GitHubCard from '../../components/GitHubCard.astro';
+import PageNav from '../../components/PageNav.astro';
+import type { MarkdownInstance } from 'astro';
+
+let posts: Record<string,any> = [];
+try {
+	posts = await Astro.glob('./*.md');
+} catch(error) {
+	
+}
+---
+
+<Layout title="Lewis Barnes // Blog">
+	<PageNav/>
+  <div class="flex flex-col main-content">
+    <main class="py-9 lg:py-12 text-white">
+      <div id="posts" class="mx-[10vw]">
+        <h1 class="text-3xl">Posts</h1>
+        <div class="my-9 lg:my-12 flex flex-col gap-2">
+            {
+							posts.length > 0 ?
+              posts.map((post: any) => (
+                <a href={post.url}>
+                  <article class="border-2 p-2 rounded-md hover:border-[#FD107A]">
+                    <div class="flex gap-2 justify-between flex-wrap items-center">
+                      <h1 class="text-xl">{post.frontmatter.title}</h1>
+                      <h1 class="text-md">{post.frontmatter.publishDate}</h1>
+                    </div>
+                    <div>{post.frontmatter.description}</div>
+                  </article>
+                </a>
+              )) : <p>Nothing found here! Stay tuned!</p>
+            }
+        </div>
+      </div>
+    </main>
+  </div>
+</Layout>
