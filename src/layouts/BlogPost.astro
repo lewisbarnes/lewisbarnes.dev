@@ -50,8 +50,10 @@ const { frontmatter } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<meta property="og:article:author" content={frontmatter.author} />
-		<meta property="og:article:publisher" content={frontmatter.author} />
+		<meta name="og:site_name" content="lewisbarnes.dev"/>
+		<meta name="og:type" content="article"/>
+		<meta property="og:title" content={frontmatter.title} />
+		<meta property="og:description" content={frontmatter.description} />
 		<title>Lewis Barnes // Blog // {frontmatter.title}</title>
 		<script src="/nav.js" is:inline></script>
 	</head>
