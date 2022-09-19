@@ -8,6 +8,36 @@ export interface Props {
 
 const { pageName = '' } = Astro.props;
 ---
+
+<script>
+	const toggleNavMenu = () => {
+  const navMenu = document.getElementById('nav-menu');
+  const content = document.getElementsByClassName('main-content');
+  if (content) {
+    for (let i = 0; i < content.length; i++) {
+      content[i].classList.toggle('hidden');
+    }
+  }
+  if (navMenu) {
+    navMenu.classList.toggle('hidden');
+  }
+};
+
+window.addEventListener('load', () => {
+  const navToggle = document.getElementById('nav-toggle');
+  if (navToggle) {
+    navToggle.addEventListener('click', (event) => toggleNavMenu());
+  }
+  window.addEventListener('resize', (event) => {
+    if (window.innerWidth >= 1024) {
+			const navMenu = document.getElementById('nav-menu');
+			if(navMenu && !navMenu.classList.contains('hidden')) {
+				toggleNavMenu();
+			}
+    }
+  });
+});
+</script>
 <nav class="px-[10vw] py-12">
   <div class="mx-auto text-white flex items-center justify-between">
     <a href="/" class="text-2xl font-medium hover:text-[#FD107A]">Lewis Barnes</a>

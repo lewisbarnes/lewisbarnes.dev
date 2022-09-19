@@ -1,73 +1,41 @@
 ---
-
+import PageFooter from '../components/PageFooter.astro';
 import PageNav from '../components/PageNav.astro';
+import '../styles/globals.css';
 export interface Props {
-	title: string;
+  title: string;
 }
 const { frontmatter } = Astro.props;
 ---
 
-<style is:global>
-	@import "https://rsms.me/inter/inter.css";
-
-	html {
-  	color-scheme: dark;
-	}
-
-	#post-content img {
-		@apply lg:max-h-[50vh] mx-auto my-8 rounded-md;
-	}
-
-	#post-content a {
-		@apply font-bold text-[#FD107A] hover:underline;
-	}
-
-	#post-content h2 {
-		@apply text-2xl my-2;
-	}
-
-	#post-content h3 {
-		@apply text-xl my-2;
-	}
-
-	#post-content h4 + ul {
-		@apply w-max ml-[3vw] my-2;
-	}
-
-	#post-content p {
-		@apply my-2;
-	}
-
-	.astro-code {
-		@apply p-4 mx-auto rounded-md;
-	}
-</style>
-
 <!DOCTYPE html>
 <html lang="en" class="">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<meta name="og:site_name" content="lewisbarnes.dev"/>
-		<meta name="og:type" content="article"/>
-		<meta property="og:title" content={frontmatter.title} />
-		<meta property="og:description" content={frontmatter.description} />
-		<title>Lewis Barnes // Blog // {frontmatter.title}</title>
-		<script src="/nav.js" is:inline></script>
-	</head>
-	<body class="bg-zinc-800 font-inter">
-		<PageNav/>
-		<div class="mx-[10vw]">
-			<div id="content" class="pb-8">
-				<h1 class="text-4xl mb-8">
-					{frontmatter.title}
-				</h1>
-				<div id="post-content">
-					<slot />
-				</div>
-			</div>
-		</div>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="og:site_name" content="lewisbarnes.dev" />
+    <meta name="og:type" content="article" />
+    <meta property="og:title" content={frontmatter.title} />
+    <meta property="og:description" content={frontmatter.description} />
+    <title>Lewis Barnes // Blog // {frontmatter.title}</title>
+  </head>
+  <body class="bg-zinc-800 font-inter flex flex-col min-h-screen">
+    <PageNav client:load />
+    <div class="mx-[10vw] main-content">
+        <article class="markdown subpixel-antialiased xl:w-4/5 mx-auto">
+					<div class="flex flex-col items-start mb-8">
+						<h1 class="text-4xl">
+							{frontmatter.title}
+	
+						</h1>
+						<p class="justify-self-end text-[#FD107A]">{new Date(frontmatter.publishDate).toDateString()}</p>
+					</div>
+          <slot />
+        </article>
+    </div>
+		<div class="flex-grow"></div>
+		<PageFooter/>
+  </body>
 </html>

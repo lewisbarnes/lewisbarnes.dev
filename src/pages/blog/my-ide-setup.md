@@ -2,7 +2,7 @@
 layout: '../../layouts/BlogPost.astro'
 title: "My IDE Setup"
 description: "An insight into my IDE setup and the tools I use to develop"
-publishDate: "18 Aug 2022"
+publishDate: "2022-08-18"
 draft: false
 ---
 
@@ -51,20 +51,3 @@ This extension is great, it adds syntax highlighting to `.prisma` files, surface
 help, and formatting.
 
 I hope you enjoyed this short post about the tools that I use to develop, see you in the next post!
-
-
-```html
-<html lang="en" class="">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-		<script src="/nav.js" is:inline></script>
-	</head>
-	<body class="bg-zinc-800 font-inter">
-		<slot />
-	</body>
-</html>
-```

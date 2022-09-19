@@ -9,5 +9,11 @@ export default defineConfig({
 			external: ["svgo",]
 		},
 	},
+	markdown: {
+    shikiConfig: {
+      theme: "poimandres",
+      wrap: true,
+    },
+  },
   integrations: [tailwind()]
 });

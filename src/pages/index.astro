@@ -8,8 +8,8 @@ import PageFooter from '../components/PageFooter.astro';
 ---
 
 <Layout title="Lewis Barnes">
-  <main class="flex flex-col h-screen" >
-		<PageNav/>
+  <main class="flex flex-col h-full" >
+		<PageNav client:load/>
     <div
       class="text-white mx-[10vw] h-[60vh] grid grid-cols-4 grid-flow-row lg:grid-cols-8 text-center lg:text-left main-content"
     >
