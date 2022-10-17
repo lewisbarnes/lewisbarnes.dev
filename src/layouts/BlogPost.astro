@@ -1,12 +1,23 @@
 ---
-import PageFooter from '../components/PageFooter.astro';
-import PageNav from '../components/PageNav.astro';
-import '../styles/globals.css';
-export interface Props {
+import PageNav from '~/components/PageNav.astro';
+
+export interface Frontmatter {
+  file: string;
+  url: string;
   title: string;
+  description: string;
+  publishDate: string;
+  draft: boolean;
 }
+
+export interface Props {
+  frontmatter: Frontmatter;
+}
+
 const { frontmatter } = Astro.props;
 ---
+
+
 
 <!DOCTYPE html>
 <html lang="en" class="">
@@ -21,21 +32,33 @@ const { frontmatter } = Astro.props;
     <meta property="og:description" content={frontmatter.description} />
     <title>Lewis Barnes // Blog // {frontmatter.title}</title>
   </head>
-  <body class="bg-zinc-800 font-inter flex flex-col min-h-screen">
-    <PageNav client:load />
-    <div class="mx-[10vw] main-content">
-        <article class="markdown subpixel-antialiased xl:w-4/5 mx-auto">
-					<div class="flex flex-col items-start mb-8">
-						<h1 class="text-4xl">
-							{frontmatter.title}
-	
-						</h1>
-						<p class="justify-self-end text-[#FD107A]">{new Date(frontmatter.publishDate).toDateString()}</p>
-					</div>
-          <slot />
-        </article>
+  <body class="bg-zinc-900 font-inter flex flex-col">
+    <PageNav />
+    <div class="main-content lg:px-36 px-4" id="article">
+			<div class="lg:border-x border-zinc-700 pb-16 pt-16">
+      <article class="mx-auto prose prose-invert lg:prose-lg xl:prose-xl">
+        {
+          frontmatter.draft && (
+            <p class="text-white mb-8 p-2 border-2 rounded-md border-red-400">
+              Hey! This is a draft! Don't share it with anyone just yet!
+            </p>
+          )
+        }
+        <h1>
+          {frontmatter.title}
+        </h1>
+        <slot/>
+      </article>
+		</div>
     </div>
-		<div class="flex-grow"></div>
-		<PageFooter/>
+		<footer class="border-t border-zinc-700 lg:px-36 text-white">
+			<div class="lg:border-x border-zinc-700 h-full flex flex-col items-center py-4 gap-2">
+				<p class="text-4xl">Want to collaborate?</p>
+				<a
+					class="p-2 border border-zinc-700 inline-block hover:border-[#FD107A]"
+					href="mailto:Lewis_Barnes@LIVE.co.uk">Get in touch</a
+				>
+			</div>
+		</footer>
   </body>
 </html>

@@ -1,5 +1,5 @@
 ---
-import PageLink from './PageLink.astro';
+import PageLink from '~/components/PageLink.astro';
 import { Icon } from 'astro-icon';
 
 export interface Props {
@@ -7,55 +7,18 @@ export interface Props {
 }
 
 const { pageName = '' } = Astro.props;
+
+
 ---
 
-<script>
-	const toggleNavMenu = () => {
-  const navMenu = document.getElementById('nav-menu');
-  const content = document.getElementsByClassName('main-content');
-  if (content) {
-    for (let i = 0; i < content.length; i++) {
-      content[i].classList.toggle('hidden');
-    }
-  }
-  if (navMenu) {
-    navMenu.classList.toggle('hidden');
-  }
-};
-
-window.addEventListener('load', () => {
-  const navToggle = document.getElementById('nav-toggle');
-  if (navToggle) {
-    navToggle.addEventListener('click', (event) => toggleNavMenu());
-  }
-  window.addEventListener('resize', (event) => {
-    if (window.innerWidth >= 1024) {
-			const navMenu = document.getElementById('nav-menu');
-			if(navMenu && !navMenu.classList.contains('hidden')) {
-				toggleNavMenu();
-			}
-    }
-  });
-});
-</script>
-<nav class="px-[10vw] py-12">
-  <div class="mx-auto text-white flex items-center justify-between">
+<nav class="lg:px-36 sticky top-0 z-50 bg-zinc-900 border-b border-zinc-700">
+  <div class=" text-white justify-between items-center flex p-4 lg:border-x border-zinc-700 h-24">
     <a href="/" class="text-2xl font-medium hover:text-[#FD107A]">Lewis Barnes</a>
-    <ul class="hidden lg:flex font-medium text-lg">
-      <PageLink href="/blog" caption="Blog" />
-      <PageLink href="/projects" caption="Projects" />
-      <PageLink href="/about" caption="About" />
-    </ul>
-    <button id="nav-toggle" class="lg:hidden"
-      ><Icon name="fa:bars" class="h-6 hover:text-[#FD107A]" />
-    </button>
+		<div class="gap-2 text-center grid grid-cols-3">
+			<a href="https://github.com/lewisbarnes"><Icon name="fa:github-square" class="h-6 mx-auto hover:text-[#FD107A]"></Icon></a>
+			<a href="https://twitter.com/lbdotdev"><Icon name="fa:twitter-square" class="h-6 mx-auto hover:text-[#FD107A]"></Icon></a>
+			<a href="https://www.linkedin.com/in/lewiswbarnes/"><Icon name="fa:linkedin-square" class="h-6 mx-auto hover:text-[#FD107A]"></Icon></a>
+		</div>
   </div>
-	<div id="nav-menu" class="left-0 right-0 bg-zinc-800 hidden py-12">
-		<ul class="font-medium text-3xl">
-      <PageLink href="/blog" caption="Blog" />
-      <PageLink href="/projects" caption="Projects" />
-      <PageLink href="/about" caption="About" />
-    </ul>
-	</div>
 </nav>
 

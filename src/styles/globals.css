@@ -3,33 +3,3 @@
 html {
 	color-scheme: dark;
 }
-
-.markdown * {
-	@apply my-2;
-}
-
-.markdown img {
-	@apply lg:max-h-[50vh] rounded-md;
-}
-
-
-
-.markdown a {
-	@apply font-bold text-[#FD107A] hover:underline;
-}
-
-.markdown h2 {
-	@apply text-2xl;
-}
-
-.markdown h3 {
-	@apply text-xl;
-}
-
-.markdown h4 + ul {
-	@apply w-max ml-[1vw];
-}
-
-.astro-code {
-	@apply p-4 mx-auto rounded-md;
-}

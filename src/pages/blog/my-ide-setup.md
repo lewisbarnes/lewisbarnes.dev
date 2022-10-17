@@ -1,5 +1,5 @@
 ---
-layout: '../../layouts/BlogPost.astro'
+layout: '~/layouts/BlogPost.astro'
 title: "My IDE Setup"
 description: "An insight into my IDE setup and the tools I use to develop"
 publishDate: "2022-08-18"
